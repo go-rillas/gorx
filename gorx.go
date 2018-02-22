@@ -46,7 +46,7 @@ func main() {
 	// parse command line flags and handle them
 	switch {
 	case *versionShort, *versionLong:
-		fmt.Printf("gor v%s\n", version)
+		fmt.Printf("gorx v%s\n", version)
 		os.Exit(0)
 	case *helpShort, *helpLong:
 		fmt.Println(help)
@@ -57,4 +57,11 @@ func main() {
 	}
 
 	args := flag.Args()
+
+	switch args[0] {
+	case "gor":
+		fmt.Println("gor")
+	case "go":
+		fmt.Println("go")
+	}
 }
