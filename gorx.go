@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	version = "0.1.0"
+	version = "0.2.0"
 
 	usage = `Usage: gorx [subcommand] (options) [args]
 `
@@ -33,6 +33,7 @@ const (
   -v, --version        Application version
 
  Commands:
+		go			   Convert *.gor to *.go
   		gor			   Convert *.go to *.gor
 `
 )
@@ -78,7 +79,15 @@ func main() {
 		}
 		WriteTextFile(outPath, outBytes)
 	case "go":
-		fmt.Println("go")
+		inBytes := ReadTextFile(args[1])
+		outBytes := commands.GetGoText(inBytes)
+		var outPath string
+		if len(args) == 3 {
+			outPath = args[2]
+		} else {
+			outPath = commands.GetGoPath(args[1])
+		}
+		WriteTextFile(outPath, outBytes)
 	}
 }
 
