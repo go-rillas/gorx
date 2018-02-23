@@ -6,9 +6,8 @@ import (
 )
 
 func SwapExtension(inPath string, replaceExtension string) string {
-	absPath, _ := filepath.Abs(inPath)
-	dirPath := filepath.Dir(absPath)
-	basePath := filepath.Base(absPath)
+	dirPath := filepath.Dir(inPath)
+	basePath := filepath.Base(inPath)
 	baseList := strings.Split(basePath, ".")
 	baseName := baseList[0]
 	finalBaseName := baseName + "." + replaceExtension
