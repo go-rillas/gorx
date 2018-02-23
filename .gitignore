@@ -17,3 +17,6 @@ gorx
 # Goland
 .idea
 
+#Goreleaser
+dist
+
