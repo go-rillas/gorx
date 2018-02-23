@@ -3,7 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
+
+	"io/ioutil"
+
+	"github.com/go-rillas/gorx/commands"
 )
 
 const (
@@ -26,6 +31,9 @@ const (
   -h, --help           Application help
       --usage          Application usage
   -v, --version        Application version
+
+ Commands:
+  		gor			   Convert *.go to *.gor
 `
 )
 
@@ -60,8 +68,31 @@ func main() {
 
 	switch args[0] {
 	case "gor":
-		fmt.Println("gor")
+		inBytes := ReadTextFile(args[1])
+		outBytes := commands.GetGorText(inBytes)
+		var outPath string
+		if len(args) == 3 {
+			outPath = args[2]
+		} else {
+			outPath = commands.GetGorPath(args[1])
+		}
+		WriteTextFile(outPath, outBytes)
 	case "go":
 		fmt.Println("go")
+	}
+}
+
+func ReadTextFile(filePath string) []byte {
+	inBytes, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return inBytes
+}
+
+func WriteTextFile(filePath string, outBytes []byte) {
+	err := ioutil.WriteFile(filePath, outBytes, 0644)
+	if err != nil {
+		log.Fatal(err)
 	}
 }
