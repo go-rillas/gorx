@@ -91,6 +91,7 @@ func main() {
 	}
 }
 
+// ReadTextFile reads text files in by parameter filePath and returns a byte string
 func ReadTextFile(filePath string) []byte {
 	inBytes, err := ioutil.ReadFile(filePath)
 	if err != nil {
@@ -99,6 +100,7 @@ func ReadTextFile(filePath string) []byte {
 	return inBytes
 }
 
+// WriteTextFile writes byte string outBytes parameter out to a text file path defined by the filePath parameter
 func WriteTextFile(filePath string, outBytes []byte) {
 	err := ioutil.WriteFile(filePath, outBytes, 0644)
 	if err != nil {
