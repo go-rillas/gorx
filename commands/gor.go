@@ -6,6 +6,7 @@ import (
 	"github.com/go-rillas/gorx/utilities"
 )
 
+// GetGorText returns a byte string for a go runner file from a valid Go source file byte string parameter
 func GetGorText(inByteString []byte) []byte {
 	if len(inByteString) == 0 {
 		return []byte("")
@@ -18,6 +19,7 @@ func GetGorText(inByteString []byte) []byte {
 	return buf.Bytes()
 }
 
+// GetGorPath returns the prePath file path string with the existing file extension converted to .gor
 func GetGorPath(prePath string) string {
 	return utilities.SwapExtension(prePath, "gor")
 }
