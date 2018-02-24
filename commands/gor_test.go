@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	gotext = `package example
+	gotext_gor = `package example
 
 import "fmt"
 
@@ -15,7 +15,7 @@ func AnExample() {
 }
 `
 
-	gortext = `#!/usr/bin/env gor
+	gortext_gor = `#!/usr/bin/env gor
 package example
 
 import "fmt"
@@ -45,9 +45,14 @@ func TestGetGorPath(t *testing.T) {
 }
 
 func TestGetGorText(t *testing.T) {
-	testbytes := ([]byte)(gotext)
+	testbytes := ([]byte)(gotext_gor)
 	gorbytes := GetGorText(testbytes)
-	if string(gorbytes) != gortext {
+	if string(gorbytes) != gortext_gor {
 		t.Errorf("[FAIL] Returned gor file text did not match the expected text:\n%s", string(gorbytes))
+	}
+
+	emptygorbytes := GetGorText([]byte(""))
+	if len(emptygorbytes) != 0 {
+		t.Errorf("[FAIL] Empty byte string returned text and should not have returned text: %v", emptygorbytes)
 	}
 }
