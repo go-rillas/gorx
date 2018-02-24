@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"testing"
 	"path/filepath"
+	"testing"
 )
 
 const (
@@ -27,8 +27,8 @@ func AnExample() {
 )
 
 func TestGetGoPath(t *testing.T) {
-	tests := []struct{
-		inPath string
+	tests := []struct {
+		inPath          string
 		expectedOutPath string
 	}{
 		{"test.gor", "test.go"},

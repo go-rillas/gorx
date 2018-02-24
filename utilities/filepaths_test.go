@@ -1,15 +1,13 @@
 package utilities
 
 import (
-	"testing"
 	"path/filepath"
-
+	"testing"
 )
 
-
 func TestSwapExtensionToGo(t *testing.T) {
-	tests := []struct{
-		inPath string
+	tests := []struct {
+		inPath          string
 		expectedOutPath string
 	}{
 		{"test.gor", "test.go"},
@@ -26,8 +24,8 @@ func TestSwapExtensionToGo(t *testing.T) {
 }
 
 func TestSwapExtensionToGor(t *testing.T) {
-	tests := []struct{
-		inPath string
+	tests := []struct {
+		inPath          string
 		expectedOutPath string
 	}{
 		{"test.go", "test.gor"},
