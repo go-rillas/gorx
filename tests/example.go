@@ -1,5 +1,7 @@
 package example
 
-func AnExample() {
+import "fmt"
 
+func AnExample() {
+	fmt.Println("Hello world!")
 }
